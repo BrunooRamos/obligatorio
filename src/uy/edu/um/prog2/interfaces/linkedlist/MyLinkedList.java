@@ -1,7 +1,9 @@
 package uy.edu.um.prog2.interfaces.linkedlist;
 
-public interface MyLinkedList<Tipo> {
-    public void add(Tipo value);
-    public void remove(int pos);
-    public Tipo get(int pos);
+import uy.edu.um.prog2.exceptions.linkedlist.EmptyListException;
+
+public interface MyLinkedList {
+    void add(Object value);
+    void remove(Integer position) throws EmptyListException;
+    Object get(Integer position);
 }

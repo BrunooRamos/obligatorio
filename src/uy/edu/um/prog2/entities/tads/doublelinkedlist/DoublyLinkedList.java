@@ -1,25 +1,25 @@
 package uy.edu.um.prog2.entities.tads.doublelinkedlist;
 
-import uy.edu.um.prog2.interfaces.doublelinkedlist.MyDoubleLinkedList;
+import uy.edu.um.prog2.interfaces.doublelinkedlist.MyDoublyLinkedList;
 
 import java.util.Iterator;
 import java.util.Objects;
 
-public class DoubleLinkedList <T> implements MyDoubleLinkedList<T>,Iterable<T>{
-    private DoubleNode<T> first   = null;
-    private DoubleNode<T> last    = null;
-    private int length            = 0;
+public class DoublyLinkedList <T> implements MyDoublyLinkedList<T>,Iterable<T>{
+    private DoublyNode<T> first   = null;
+    private DoublyNode<T> last    = null;
+    protected int length      = 0;
 
     @Override
     public void add(T value) {
-        DoubleNode<T> newNode = new DoubleNode<T>(value);
+        DoublyNode<T> newNode = new DoublyNode<T>(value);
         if (this.first == null) {
             this.first = newNode;
             this.length++;
             return;
         }
 
-        DoubleNode<T> temp = this.first;
+        DoublyNode<T> temp = this.first;
 
         while (temp.getNext() != null) {
             temp = temp.getNext();
@@ -29,8 +29,9 @@ public class DoubleLinkedList <T> implements MyDoubleLinkedList<T>,Iterable<T>{
         temp.setNext(newNode);
         this.length++;
     }
+    @Override
     public void add(int index,T value) throws IndexOutOfBoundsException{
-        DoubleNode<T> temp = new DoubleNode<>(value);
+        DoublyNode<T> temp = new DoublyNode<>(value);
         if (index < 0){
             throw new IndexOutOfBoundsException("negative index given");
         }
@@ -48,8 +49,8 @@ public class DoubleLinkedList <T> implements MyDoubleLinkedList<T>,Iterable<T>{
             this.first = temp;
         }
 
-        DoubleNode<T> nodeAtIndexPosition         = this.getNode(index);
-        DoubleNode<T> nodeAtIndexPositionMinusOne = this.getNode(index - 1);
+        DoublyNode<T> nodeAtIndexPosition         = this.getNode(index);
+        DoublyNode<T> nodeAtIndexPositionMinusOne = this.getNode(index - 1);
 
         nodeAtIndexPosition.setPrevious(temp);
         temp.setNext(nodeAtIndexPosition);
@@ -57,8 +58,6 @@ public class DoubleLinkedList <T> implements MyDoubleLinkedList<T>,Iterable<T>{
         nodeAtIndexPositionMinusOne.setNext(temp);
         temp.setPrevious(nodeAtIndexPositionMinusOne);
     }
-
-
     @Override
     public T remove(int pos) throws IndexOutOfBoundsException{
 
@@ -66,12 +65,12 @@ public class DoubleLinkedList <T> implements MyDoubleLinkedList<T>,Iterable<T>{
             throw new IndexOutOfBoundsException();
         }
 
-        DoubleNode<T> deadMan  = this.getNode(pos);
+        DoublyNode<T> deadMan  = this.getNode(pos);
 
-        DoubleNode<T> next     = null;
+        DoublyNode<T> next     = null;
 
         if (deadMan.getPrevious() != null) {
-            DoubleNode<T> previous   = deadMan.getPrevious();
+            DoublyNode<T> previous   = deadMan.getPrevious();
 
             if (deadMan.getNext() != null){
                 next       = deadMan.getNext();
@@ -90,13 +89,11 @@ public class DoubleLinkedList <T> implements MyDoubleLinkedList<T>,Iterable<T>{
         return deadMan.getValue();
 
     }
-
     @Override
     public T get(int pos) throws IndexOutOfBoundsException{
         return this.getNode(pos).getValue();
     }
-
-    public DoubleNode<T> getNode(int pos) throws IndexOutOfBoundsException{
+    protected DoublyNode<T> getNode(int pos) throws IndexOutOfBoundsException{
 
         if (this.first == null) {
             throw new IndexOutOfBoundsException("LinkedList is empty");
@@ -110,7 +107,7 @@ public class DoubleLinkedList <T> implements MyDoubleLinkedList<T>,Iterable<T>{
             throw new IndexOutOfBoundsException("index given exceeds list length - 1");
         }
 
-        DoubleNode<T> temp = this.first;
+        DoublyNode<T> temp = this.first;
         if(pos <= Math.floor(this.length/2)){
             for (int i = 0;i != pos;i++) {
                 if (temp.getNext() == null) {
@@ -129,11 +126,10 @@ public class DoubleLinkedList <T> implements MyDoubleLinkedList<T>,Iterable<T>{
 
         return temp;
     }
-
+    @Override
     public void addAscending(T value){
         //no entendi bien la consigna
     }
-
     @Override
     public boolean contains(T value) {
         for(T item : this){
@@ -145,13 +141,12 @@ public class DoubleLinkedList <T> implements MyDoubleLinkedList<T>,Iterable<T>{
 
         return false;
     }
-
     @Override
-    public boolean containsAll(MyDoubleLinkedList<T> ls) {
+    public boolean containsAll(MyDoublyLinkedList<T> ls) {
         return this.containsAll(ls,false);
     }
     @Override
-    public boolean containsAll(MyDoubleLinkedList<T> ls,boolean strict) {
+    public boolean containsAll(MyDoublyLinkedList<T> ls,boolean strict) {
         if(ls.size() > this.size()){
             return false;
         }
@@ -185,55 +180,29 @@ public class DoubleLinkedList <T> implements MyDoubleLinkedList<T>,Iterable<T>{
             }
         }
 
+
         return true;
     }
-
+    @Override
     public boolean isEmpty(){
         return this.first==null;
     }
-
+    @Override
     public void addFirst(T value){
         this.add(0,value);
     }
-
+    @Override
     public void addLast(T value){
         this.add(this.length - 1,value);
     }
-
 
     //permite que este TAD sea iterable
     @Override
     public Iterator<T> iterator() {
         return new DoublyLinkedListIterator();
     }
-
-    @Override
-    public int indexOf(T item) {
-        int i = 0;
-        for(T k:this){
-            if (k == item){
-                return i;
-            }
-            i++;
-        }
-        return -1;
-    }
-
-    @Override
-    public int lastIndexOf(T item) {
-        int i = 0;
-        int lastPos = -1;
-        for(T k:this){
-            if (k == item){
-                lastPos = i;
-            }
-            i++;
-        }
-        return lastPos;
-    }
-
     private class DoublyLinkedListIterator implements Iterator<T> {
-        private DoubleNode<T> current = first;
+        private DoublyNode<T> current = first;
 
         @Override
         public boolean hasNext() {
@@ -250,27 +219,51 @@ public class DoubleLinkedList <T> implements MyDoubleLinkedList<T>,Iterable<T>{
             return value;
         }
     }
+    //
 
+    @Override
+    public int indexOf(T item) {
+        int i = 0;
+        for(T k:this){
+            if (k == item){
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+    @Override
+    public int lastIndexOf(T item) {
+        int i = 0;
+        int lastPos = -1;
+        for(T k:this){
+            if (k == item){
+                lastPos = i;
+            }
+            i++;
+        }
+        return lastPos;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DoubleLinkedList<?> that = (DoubleLinkedList<?>) o;
-        return length == that.length && Objects.equals(first, that.first) && Objects.equals(last, that.last) && this.containsAll((MyDoubleLinkedList<T>) o,true);
+        DoublyLinkedList<?> that = (DoublyLinkedList<?>) o;
+        return length == that.length && Objects.equals(first, that.first) && Objects.equals(last, that.last) && this.containsAll((MyDoublyLinkedList<T>) o,true);
     }
-
+    @Override
     public int size() {
         return length;
     }
-
+    @Override
     public void clear(){
         this.first  = null;
         this.last   = null;
         this.length = 0;
     }
-
     @Override
-    public boolean removeAll(MyDoubleLinkedList<T> ls) {
+    public boolean removeAll(MyDoublyLinkedList<T> ls) {
         return false;
     }
+
 }
