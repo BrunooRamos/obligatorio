@@ -1,5 +1,7 @@
 package uy.edu.um.prog2.entities.tads.doublelinkedlist;
 
+import java.util.Objects;
+
 public class DoublyNode<T>{
     private T value;
     private DoublyNode<T> next;
@@ -43,5 +45,18 @@ public class DoublyNode<T>{
 
     public void setPriority(int priority) {
         this.priority = priority;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DoublyNode<?> that = (DoublyNode<?>) o;
+        return priority == that.priority && Objects.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value, priority);
     }
 }

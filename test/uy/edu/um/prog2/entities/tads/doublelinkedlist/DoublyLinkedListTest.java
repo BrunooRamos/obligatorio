@@ -220,29 +220,99 @@ class DoublyLinkedListTest {
 
     @Test
     void iterator() {
+        //creo que ya hay un test para esto pero no estoy seguro
     }
 
     @Test
     void indexOf() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("1");
+        ls.add("2");
+        ls.add("1");
+        ls.add("2");
+        ls.add("3");
+        ls.add("4");
+        assertEquals(0,ls.indexOf("1"));
+        assertEquals(1,ls.indexOf("2"));
+        assertEquals(4,ls.indexOf("3"));
+        assertEquals(5,ls.indexOf("4"));
     }
 
     @Test
     void lastIndexOf() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("1");
+        ls.add("2");
+        ls.add("1");
+        ls.add("2");
+        ls.add("3");
+        ls.add("4");
+        assertEquals(2,ls.lastIndexOf("1"));
+        assertEquals(3,ls.lastIndexOf("2"));
+        assertEquals(4,ls.lastIndexOf("3"));
+        assertEquals(5,ls.lastIndexOf("4"));
     }
 
     @Test
     void testEquals() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("1");
+        ls.add("2");
+        ls.add("1");
+
+        MyDoublyLinkedList<String> ls2 = new DoublyLinkedList<>();
+        ls2.add("1");
+        ls2.add("2");
+        ls2.add("1");
+        assertEquals(true,ls.equals(ls2));
+
+        MyDoublyLinkedList<String> ls3 = new DoublyLinkedList<>();
+        ls3.add("2");
+        ls3.add("1");
+        ls3.add("1");
+        assertEquals(false,ls.equals(ls3));
     }
 
     @Test
     void size() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("1");
+        ls.add("2");
+        ls.add("1");
+
+        assertEquals(3,ls.size());
+
+        ls.remove(0);
+
+        assertEquals(2,ls.size());
     }
 
     @Test
     void clear() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("1");
+        ls.add("2");
+        ls.add("1");
+
+        ls.clear();
+        assertEquals(true,ls.isEmpty());
     }
 
     @Test
     void removeAll() {
+//        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+//        ls.add("a");
+//        ls.add("b");
+//        ls.add("c");
+//
+//        MyDoublyLinkedList<String> ls2 = new DoublyLinkedList<>();
+//        ls2.add("a");
+//        ls2.add("2");
+//
+//        ls.removeAll(ls2);
+//
+//        assertEquals("",ls.get(0));
     }
 }
+
+//    se agrego equals en DoublyNode y test unitarios para indexOf, lastIndexOf, equals (DoublyLinkedList)
