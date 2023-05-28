@@ -1,6 +1,7 @@
 package uy.edu.um.prog2.entities.tads.doublelinkedlist;
 
 import org.junit.jupiter.api.Test;
+import uy.edu.um.prog2.interfaces.doublelinkedlist.MyDoublyLinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -88,7 +89,35 @@ class DoublyLinkedListTest {
     }
 
     @Test
-    void add1() {
+    void addAtIndexCenter() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("Hi");
+        ls.add("Bye");
+        ls.add("!");
+
+        ls.add(1,",wait,");
+        assertEquals(",wait,",ls.get(1));
+    }
+    @Test
+    void addAtIndex0() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("Hi");
+        ls.add("Bye");
+        ls.add("!");
+
+        ls.add(0,"str:");
+        assertEquals("str:",ls.get(0));
+
+    }
+    @Test
+    void addAtIndexEnd() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("Hi");
+        ls.add("Bye");
+        ls.add("!");
+
+        ls.add(3,":end");
+        assertEquals(":end",ls.get(3));
     }
 
     @Test
@@ -97,10 +126,17 @@ class DoublyLinkedListTest {
 
     @Test
     void contains() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("1");
+        ls.add("2");
+        ls.add("3");
+
+        assertEquals(true,ls.contains("2"));
     }
 
     @Test
     void containsAll() {
+
     }
 
     @Test

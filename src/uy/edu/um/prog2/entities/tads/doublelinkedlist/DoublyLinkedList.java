@@ -27,6 +27,7 @@ public class DoublyLinkedList <T> implements MyDoublyLinkedList<T>,Iterable<T>{
 
         newNode.setPrevious(temp);
         temp.setNext(newNode);
+        this.last = newNode;
         this.length++;
     }
     @Override
@@ -47,6 +48,12 @@ public class DoublyLinkedList <T> implements MyDoublyLinkedList<T>,Iterable<T>{
             temp.setNext(this.first);
             this.first.setPrevious(temp);
             this.first = temp;
+            return;
+        }
+
+        if (index == this.length){
+            this.add(value);
+            return;
         }
 
         DoublyNode<T> nodeAtIndexPosition         = this.getNode(index);
@@ -107,8 +114,10 @@ public class DoublyLinkedList <T> implements MyDoublyLinkedList<T>,Iterable<T>{
             throw new IndexOutOfBoundsException("index given exceeds list length - 1");
         }
 
-        DoublyNode<T> temp = this.first;
+
+        DoublyNode<T> temp;
         if(pos <= Math.floor(this.length/2)){
+            temp = this.first;
             for (int i = 0;i != pos;i++) {
                 if (temp.getNext() == null) {
                     throw new Error("internal list node pointer missing");
@@ -116,8 +125,9 @@ public class DoublyLinkedList <T> implements MyDoublyLinkedList<T>,Iterable<T>{
                 temp = temp.getNext();
             }
         }else{
-            for (int i = 0;i != pos;i++) {
-                if (temp.getNext() == null) {
+            temp = this.last;
+            for (int i = this.length -1;i != pos;i--) {
+                if (temp.getPrevious() == null) {
                     throw new Error("internal list node pointer missing");
                 }
                 temp = temp.getPrevious();
