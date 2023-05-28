@@ -64,6 +64,7 @@ public class DoublyLinkedList <T> implements MyDoublyLinkedList<T>,Iterable<T>{
 
         nodeAtIndexPositionMinusOne.setNext(temp);
         temp.setPrevious(nodeAtIndexPositionMinusOne);
+        this.length++;
     }
     @Override
     public T remove(int pos) throws IndexOutOfBoundsException{
@@ -205,7 +206,7 @@ public class DoublyLinkedList <T> implements MyDoublyLinkedList<T>,Iterable<T>{
     }
     @Override
     public void addLast(T value){
-        this.add(this.length - 1,value);
+        this.add(value);
     }
 
     //permite que este TAD sea iterable

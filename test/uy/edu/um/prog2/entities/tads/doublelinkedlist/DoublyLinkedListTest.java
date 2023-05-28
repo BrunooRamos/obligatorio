@@ -46,11 +46,19 @@ class DoublyLinkedListTest {
 
     @org.junit.jupiter.api.Test
     void get() {
-        var ls = new DoublyLinkedList();
-        ls.add("HI");
-        ls.add(1);
-        assertEquals("HI",ls.get(0));
-        assertEquals(1,ls.get(1));
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("0");
+        ls.add("1");
+        ls.add("2");
+        ls.add("3");
+        ls.add("4");
+        ls.add("5");
+        assertEquals("0",ls.get(0));
+        assertEquals("1",ls.get(1));
+        assertEquals("2",ls.get(2));
+        assertEquals("3",ls.get(3));
+        assertEquals("4",ls.get(4));
+        assertEquals("5",ls.get(5));
     }
 
     @org.junit.jupiter.api.Test
@@ -180,14 +188,34 @@ class DoublyLinkedListTest {
 
     @Test
     void isEmpty() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        assertEquals(true,ls.isEmpty());
+        ls.add("1");
+        ls.add("2");
+        ls.add("3");
+        assertEquals(false,ls.isEmpty());
+        ls.remove(0);
+        ls.remove(0);
+        ls.remove(0);
+        assertEquals(true,ls.isEmpty());
     }
 
     @Test
     void addFirst() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("1");
+        ls.add("2");
+        ls.addFirst("0");
+        assertEquals("0",ls.get(0));
     }
 
     @Test
     void addLast() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("1");
+        ls.add("2");
+        ls.addLast("3");
+        assertEquals("3",ls.get(2));
     }
 
     @Test
