@@ -14,6 +14,8 @@ public interface MyDoublyLinkedList  <T> extends Iterable<T>{
     public void addLast(T value);
     //quita un elemento en un índice de la lista desplazando el resto de la lista hacia el principio de la lista
     public T remove(int pos);
+    //quita de la lista la primera instancia del elemento proporcionado, desplazando el resto de la lista hacia el principio de la lista
+    public boolean remove(T value);
     // elimina todos los elementos de la lista que coinciden con la lista proporcionada
     public boolean removeAll(MyDoublyLinkedList<T> ls);
     //devuelve true si la lista esta vacía

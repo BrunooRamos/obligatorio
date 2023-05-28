@@ -97,6 +97,15 @@ public class DoublyLinkedList <T> implements MyDoublyLinkedList<T>,Iterable<T>{
         return deadMan.getValue();
 
     }
+    public boolean remove(T value){
+        int indexOfValue = this.indexOf(value);
+        if (indexOfValue == -1){
+            return false;
+        }
+
+        this.remove(indexOfValue);
+        return true;
+    }
     @Override
     public T get(int pos) throws IndexOutOfBoundsException{
         return this.getNode(pos).getValue();
@@ -276,7 +285,13 @@ public class DoublyLinkedList <T> implements MyDoublyLinkedList<T>,Iterable<T>{
     }
     @Override
     public boolean removeAll(MyDoublyLinkedList<T> ls) {
-        return false;
+        boolean flag = false;
+        for (T item : ls){
+            if(this.remove(item)){
+                flag = true;
+            }
+        }
+        return flag;
     }
 
 }

@@ -300,19 +300,51 @@ class DoublyLinkedListTest {
 
     @Test
     void removeAll() {
-//        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
-//        ls.add("a");
-//        ls.add("b");
-//        ls.add("c");
-//
-//        MyDoublyLinkedList<String> ls2 = new DoublyLinkedList<>();
-//        ls2.add("a");
-//        ls2.add("2");
-//
-//        ls.removeAll(ls2);
-//
-//        assertEquals("",ls.get(0));
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("a");
+        ls.add("b");
+        ls.add("c");
+
+        MyDoublyLinkedList<String> ls2 = new DoublyLinkedList<>();
+        ls2.add("a");
+        ls2.add("2");
+
+        boolean flag = ls.removeAll(ls2);
+
+        assertEquals("b",ls.get(0));
+        assertEquals(true,flag);
+
+        MyDoublyLinkedList<String> ls3 = new DoublyLinkedList<>();
+        ls3.add("NOT");
+        ls3.add("HERE");
+
+        flag = ls.removeAll(ls3);
+
+        assertEquals("b",ls.get(0));
+        assertEquals(false,flag);
+    }
+    @Test
+    void removeValue(){
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("a");
+        ls.add("b");
+        ls.add("c");
+        ls.add("d");
+        ls.add("e");
+        ls.add("f");
+
+        boolean flag = ls.remove("c");
+
+        assertEquals("a",ls.get(0));
+        assertEquals("b",ls.get(1));
+        assertEquals("d",ls.get(2));
+        assertEquals("e",ls.get(3));
+        assertEquals("f",ls.get(4));
+        assertEquals(true,flag);
+
+        flag = ls.remove("g");
+
+        assertEquals(false,flag);
     }
 }
 
-//    se agrego equals en DoublyNode y test unitarios para indexOf, lastIndexOf, equals (DoublyLinkedList)
