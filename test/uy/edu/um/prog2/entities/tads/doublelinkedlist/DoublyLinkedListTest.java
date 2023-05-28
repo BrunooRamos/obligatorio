@@ -136,11 +136,46 @@ class DoublyLinkedListTest {
 
     @Test
     void containsAll() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("1");
+        ls.add("2");
+        ls.add("3");
+        ls.add("a");
+        ls.add("5");
+        ls.add("6");
+        MyDoublyLinkedList<String> ls2 = new DoublyLinkedList<>();
+        ls2.add("3");
+        ls2.add("a");
+        ls2.add("5");
+        MyDoublyLinkedList<String> ls3 = new DoublyLinkedList<>();
+        ls3.add("3");
+        ls3.add("b");
+        ls3.add("5");
 
+        assertEquals(true,ls.containsAll(ls2));
+        assertEquals(false,ls.containsAll(ls3));
     }
 
     @Test
-    void testContainsAll() {
+    void containsAllStrict() {
+        MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
+        ls.add("1");
+        ls.add("2");
+        ls.add("3");
+        ls.add("a");
+        ls.add("5");
+        ls.add("6");
+        MyDoublyLinkedList<String> ls2 = new DoublyLinkedList<>();
+        ls2.add("3");
+        ls2.add("a");
+        ls2.add("5");
+        MyDoublyLinkedList<String> ls3 = new DoublyLinkedList<>();
+        ls3.add("a");
+        ls3.add("3");
+        ls3.add("5");
+
+        assertEquals(true,ls.containsAll(ls2,true));
+        assertEquals(false,ls.containsAll(ls3,true));
     }
 
     @Test

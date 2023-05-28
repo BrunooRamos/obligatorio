@@ -164,15 +164,17 @@ public class DoublyLinkedList <T> implements MyDoublyLinkedList<T>,Iterable<T>{
         if(strict) {
             int compIndex = indexOf(ls.get(0));
 
-            if(ls.size() < this.length - compIndex){
+            if(ls.size() > this.length - compIndex){
                 return false;
             }
 
-            while (compIndex < ls.size()){
-                if (ls.get(compIndex) != this.get(compIndex)){
+            int i = 0;
+            while (compIndex < this.length -1){
+                if (ls.get(i) != this.get(compIndex)){
                     return false;
                 }
                 compIndex++;
+                i++;
             }
 
         }else{
