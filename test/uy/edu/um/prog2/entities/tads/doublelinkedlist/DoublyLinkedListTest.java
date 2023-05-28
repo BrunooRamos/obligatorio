@@ -88,19 +88,7 @@ class DoublyLinkedListTest {
     }
 
     @Test
-    void testAdd() {
-    }
-
-    @Test
-    void testAdd1() {
-    }
-
-    @Test
-    void testRemove() {
-    }
-
-    @Test
-    void testGet() {
+    void add1() {
     }
 
     @Test
