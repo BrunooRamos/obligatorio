@@ -159,7 +159,8 @@ public class Tree implements MyTree {
                 if (nodoArbol.nodoIzquierdo.getKey().equals(key)){
                     nodoArbol.nodoIzquierdo = null;
                 }
-            } else if (nodoArbol.nodoDerecho != null) {
+            }
+            if (nodoArbol.nodoDerecho != null) {
                 if (nodoArbol.nodoDerecho.getKey().equals(key)){
                     nodoArbol.nodoDerecho = null;
                 }
