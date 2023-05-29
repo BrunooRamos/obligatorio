@@ -1,4 +1,4 @@
-package uy.edu.um.prog2.exceptions.tree;
+package uy.edu.um.prog2.interfaces.tree;
 
 import uy.edu.um.prog2.entities.tads.linkedlist.MyLinkedListImp;
 import uy.edu.um.prog2.exceptions.linkedlist.EmptyListException;

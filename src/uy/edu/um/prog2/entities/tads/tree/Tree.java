@@ -2,8 +2,7 @@ package uy.edu.um.prog2.entities.tads.tree;
 
 
 import uy.edu.um.prog2.entities.tads.linkedlist.MyLinkedListImp;
-import uy.edu.um.prog2.exceptions.stack.EmptyStackException;
-import uy.edu.um.prog2.exceptions.tree.MyTree;
+import uy.edu.um.prog2.interfaces.tree.MyTree;
 import uy.edu.um.prog2.exceptions.treeBST.ErrorControlado;
 
 public class Tree implements MyTree {
