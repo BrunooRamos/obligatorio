@@ -85,11 +85,11 @@ class TreeTest {
         tree.insert(3,"I'm a leaf (1)",2);
         tree.insert(4,"I'm a leaf (2)",2);
 
-        assertEquals(3,tree.inOrder().get(0));
-        assertEquals(1,tree.inOrder().get(1));
-        assertEquals(4,tree.inOrder().get(2));
-        assertEquals(0,tree.inOrder().get(3));
-        assertEquals(2,tree.inOrder().get(4));
+        assertEquals(1,tree.inOrder().get(0));
+        assertEquals(0,tree.inOrder().get(1));
+        assertEquals(3,tree.inOrder().get(2));
+        assertEquals(2,tree.inOrder().get(3));
+        assertEquals(4,tree.inOrder().get(4));
 
 
     }
@@ -120,9 +120,9 @@ class TreeTest {
         tree.insert(3,"I'm a leaf (1)",2);
         tree.insert(4,"I'm a leaf (2)",2);
 
-        assertEquals(3,tree.postOrder().get(0));
-        assertEquals(4,tree.postOrder().get(1));
-        assertEquals(1,tree.postOrder().get(2));
+        assertEquals(1,tree.postOrder().get(0));
+        assertEquals(3,tree.postOrder().get(1));
+        assertEquals(4,tree.postOrder().get(2));
         assertEquals(2,tree.postOrder().get(3));
         assertEquals(0,tree.postOrder().get(4));
     }
