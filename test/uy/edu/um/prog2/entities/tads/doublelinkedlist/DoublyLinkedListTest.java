@@ -127,7 +127,7 @@ class DoublyLinkedListTest {
         ls.add(3,":end");
         assertEquals(":end",ls.get(3));
     }
-
+//hay que implementar -->
     @Test
     void addAscending() {
     }
@@ -139,7 +139,7 @@ class DoublyLinkedListTest {
         ls.add("2");
         ls.add("3");
 
-        assertEquals(true,ls.contains("2"));
+        assertTrue(ls.contains("2"));
     }
 
     @Test
@@ -160,8 +160,8 @@ class DoublyLinkedListTest {
         ls3.add("b");
         ls3.add("5");
 
-        assertEquals(true,ls.containsAll(ls2));
-        assertEquals(false,ls.containsAll(ls3));
+        assertTrue(ls.containsAll(ls2));
+        assertFalse(ls.containsAll(ls3));
     }
 
     @Test
@@ -182,22 +182,22 @@ class DoublyLinkedListTest {
         ls3.add("3");
         ls3.add("5");
 
-        assertEquals(true,ls.containsAll(ls2,true));
-        assertEquals(false,ls.containsAll(ls3,true));
+        assertTrue(ls.containsAll(ls2,true));
+        assertFalse(ls.containsAll(ls3,true));
     }
 
     @Test
     void isEmpty() {
         MyDoublyLinkedList<String> ls = new DoublyLinkedList<>();
-        assertEquals(true,ls.isEmpty());
+        assertTrue(ls.isEmpty());
         ls.add("1");
         ls.add("2");
         ls.add("3");
-        assertEquals(false,ls.isEmpty());
+        assertFalse(ls.isEmpty());
         ls.remove(0);
         ls.remove(0);
         ls.remove(0);
-        assertEquals(true,ls.isEmpty());
+        assertTrue(ls.isEmpty());
     }
 
     @Test
@@ -217,7 +217,7 @@ class DoublyLinkedListTest {
         ls.addLast("3");
         assertEquals("3",ls.get(2));
     }
-
+    //hay que implementar -->
     @Test
     void iterator() {
         //creo que ya hay un test para esto pero no estoy seguro
@@ -264,13 +264,13 @@ class DoublyLinkedListTest {
         ls2.add("1");
         ls2.add("2");
         ls2.add("1");
-        assertEquals(true,ls.equals(ls2));
+        assertTrue(ls.equals(ls2));
 
         MyDoublyLinkedList<String> ls3 = new DoublyLinkedList<>();
         ls3.add("2");
         ls3.add("1");
         ls3.add("1");
-        assertEquals(false,ls.equals(ls3));
+        assertFalse(ls.equals(ls3));
     }
 
     @Test
@@ -295,7 +295,7 @@ class DoublyLinkedListTest {
         ls.add("1");
 
         ls.clear();
-        assertEquals(true,ls.isEmpty());
+        assertTrue(ls.isEmpty());
     }
 
     @Test
@@ -312,7 +312,7 @@ class DoublyLinkedListTest {
         boolean flag = ls.removeAll(ls2);
 
         assertEquals("b",ls.get(0));
-        assertEquals(true,flag);
+        assertTrue(flag);
 
         MyDoublyLinkedList<String> ls3 = new DoublyLinkedList<>();
         ls3.add("NOT");
@@ -321,7 +321,7 @@ class DoublyLinkedListTest {
         flag = ls.removeAll(ls3);
 
         assertEquals("b",ls.get(0));
-        assertEquals(false,flag);
+        assertFalse(flag);
     }
     @Test
     void removeValue(){
@@ -340,11 +340,11 @@ class DoublyLinkedListTest {
         assertEquals("d",ls.get(2));
         assertEquals("e",ls.get(3));
         assertEquals("f",ls.get(4));
-        assertEquals(true,flag);
+        assertTrue(flag);
 
         flag = ls.remove("g");
 
-        assertEquals(false,flag);
+        assertFalse(flag);
     }
 }
 
